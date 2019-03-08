@@ -19,7 +19,7 @@ router.get("/scrape", (req, res)=>{
               console.error(err)
             }
             data = JSON.parse(data);
-            console.log(data.length, "records", "were", "saved", "successfully");
+            console.log(data.length, 'records', 'were', 'saved', 'successfully');
             const message = '';
             Question.collection.insertMany(data)
             .then((resp) => {

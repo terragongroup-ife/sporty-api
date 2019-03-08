@@ -20,10 +20,21 @@ class Scrapper{
                 req.continue();
             }
         });
-        await page.goto(sportUrl, {         
-            waitUntil: 'networkidle2',
-            timeout: 0
-        });
+        try {
+                await page.goto(sportUrl, {         
+                        waitUntil: 'networkidle2',
+                        timeout: 0
+                    });
+        }
+        catch(exp){
+                console.log("bad connection", exp);
+                return res.status(599).json({
+                        error: true,
+                        statusCode: 599,
+                        message: 'Bad connection'
+
+                })
+        }
         let sportData = await page.evaluate(() =>{
             // generating random questions
             function generateRandom(min, max, num) {
