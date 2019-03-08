@@ -88,11 +88,7 @@ class Scrapper{
                                         else{
                                                 resolve("File written succesfully");
                                                 console.log('File written succesfully')
-                                                // return res.send({
-                                                //         code: 200,
-                                                //         error: false,
-                                                //         message: 'File written succesfully'
-                                                // })
+                                                
                                         }
                                         
                                 })
