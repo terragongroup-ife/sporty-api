@@ -13,30 +13,31 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/scrape", (req, res)=>{
     new Scrapper().scrape(req, res)
-    .then( (message)=>{
+    .then( ()=>{
         fs.readFile('question.json', 'utf8', (err, data) => {
             if (err) {
               console.error(err)
             }
             data = JSON.parse(data);
-            console.log(data.length)
-            data.forEach(element => {
-                Question.create({
-                    question: element.question,
-                    answer: element.answer
+            console.log(data.length, "records", "were", "saved", "successfully");
+            const message = '';
+            Question.collection.insertMany(data)
+            .then((resp) => {
+                console.log('questions saved successfully');
+                return res.send({
+                    error: false,
+                    code: 200,
+                    message: resp.result
                 })
-                .then((resp) => {
-                    console.log('questions saved successfully', resp)
-                })
-                .catch((err) => {
-                    console.log('Unable to save questions', err);
-                });
-            });
-            res.send({
-                error: false,
-                code: 200,
-                message: "File written and saved successfully"
             })
+            .catch((err) => {
+                console.log('Unable to save questions', err);
+                return res.send({
+                    error: true,
+                    code: 400,
+                    message: err
+                })
+            });    
         });
 
     }).catch( (error)=>{
@@ -47,9 +48,10 @@ router.get("/scrape", (req, res)=>{
 
 router.get('/random', (req, res) => {
     Question.aggregate(
-        [ { $sample: { size: 5 } } ]
+        [ { $sample: { size: 10 } } ]
      )
      .then((data) => {
+         console.log('Questions queried successfully');
          return res.send({
              error: false,
              code: 200,
