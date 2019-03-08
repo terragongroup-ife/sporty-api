@@ -3,6 +3,8 @@ mongoose.set('useCreateIndex', true);
 
 mongoose.Promise = global.Promise
 
+
+
 mongoose.connect(process.env.DB_URL, {useNewUrlParser: true  })
 .then(() => {
     console.log('Connected to MongoDB sucessfully')
