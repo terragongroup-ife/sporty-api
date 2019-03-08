@@ -24,7 +24,7 @@ router.get("/scrape", (req, res)=>{
             Question.collection.insertMany(data)
             .then((resp) => {
                 console.log('questions saved successfully');
-                return res.send({
+                return res.status(200).send({
                     error: false,
                     code: 200,
                     message: resp.result
@@ -32,7 +32,7 @@ router.get("/scrape", (req, res)=>{
             })
             .catch((err) => {
                 console.log('Unable to save questions', err);
-                return res.send({
+                return res.status(400).send({
                     error: true,
                     code: 400,
                     message: err
@@ -52,7 +52,7 @@ router.get('/random', (req, res) => {
      )
      .then((data) => {
          console.log('Questions queried successfully');
-         return res.send({
+         return res.status(200).send({
              error: false,
              code: 200,
              message: 'Questions gotten successfully',
@@ -60,7 +60,7 @@ router.get('/random', (req, res) => {
          });
      })
      .catch((err) => {
-        return res.send({
+        return res.status(400).send({
             error: true,
             code: 404,
             message: 'Unable to get questions',

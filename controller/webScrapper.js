@@ -119,9 +119,9 @@ class Scrapper{
                 if (err) {
                         reject("unable to write file")
                         console.log(err);
-                        return res.send({
+                        return res.status(400).send({
                                 error: true,
-                                code: 408,
+                                code: 400,
                                 message: err
                         })
                 }
