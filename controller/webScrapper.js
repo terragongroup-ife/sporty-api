@@ -27,7 +27,7 @@ class Scrapper{
                     });
         }
         catch(exp){
-                console.log("bad connection", exp);
+                console.log("bad connection");
                 return res.status(599).json({
                         error: true,
                         statusCode: 599,
