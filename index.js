@@ -1,14 +1,13 @@
 
 require('dotenv').config();
 const express = require('express');
-const settings = require("./Config/settings");
-const config = require("./Config/config");
+const mongoose = require("./Config/settings");
 const router = require("./Route/router");
 const app = express();
 const cors = require('cors');
 app.use(cors());
 
-const { port } = config;
+const port = process.env.PORT;
 
 app.get('/', (req, res) => {
     res.send('Welcome to Terra Sport-Quiz')
