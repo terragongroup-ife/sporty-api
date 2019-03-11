@@ -1,149 +1,222 @@
 [
   {
-    "question": "what is the score between Watford vs Leicester City",
-    "answer": "2:1",
-    "wronganswer_1": "0:3",
-    "wronganswer_2": "1:4",
-    "wronganswer_3": "1:3"
+    "question": "what is the score between Liverpool vs Burnley",
+    "answer": "4:2",
+    "options": [
+      "2:0",
+      "3:4",
+      "1:3",
+      "4:2"
+    ]
   },
   {
-    "question": "what is the score between Fulham vs Chelsea",
-    "answer": "1:2",
-    "wronganswer_1": "3:3",
-    "wronganswer_2": "3:1",
-    "wronganswer_3": "0:1"
-  },
-  {
-    "question": "what is the score between Everton vs Liverpool",
-    "answer": "0:0",
-    "wronganswer_1": "3:1",
-    "wronganswer_2": "1:1",
-    "wronganswer_3": "2:1"
-  },
-  {
-    "question": "what is the score between Eibar vs Celta de Vigo",
-    "answer": "1:0",
-    "wronganswer_1": "4:2",
-    "wronganswer_2": "3:2",
-    "wronganswer_3": "2:4"
-  },
-  {
-    "question": "what is the score between Real Betis vs Getafe",
-    "answer": "1:2",
-    "wronganswer_1": "4:3",
-    "wronganswer_2": "2:1",
-    "wronganswer_3": "2:4"
-  },
-  {
-    "question": "what is the score between Real Sociedad vs Atlético Madrid",
-    "answer": "0:2",
-    "wronganswer_1": "4:0",
-    "wronganswer_2": "1:3",
-    "wronganswer_3": "3:3"
-  },
-  {
-    "question": "what is the score between Valencia vs Athletic Club",
-    "answer": "2:0",
-    "wronganswer_1": "4:4",
-    "wronganswer_2": "3:2",
-    "wronganswer_3": "4:3"
-  },
-  {
-    "question": "what is the score between Torino vs Chievo",
-    "answer": "3:0",
-    "wronganswer_1": "2:4",
-    "wronganswer_2": "2:3",
-    "wronganswer_3": "0:2"
-  },
-  {
-    "question": "what is the score between Genoa vs Frosinone",
-    "answer": "0:0",
-    "wronganswer_1": "1:1",
-    "wronganswer_2": "2:3",
-    "wronganswer_3": "4:4"
-  },
-  {
-    "question": "what is the score between SPAL vs Sampdoria",
-    "answer": "1:2",
-    "wronganswer_1": "0:0",
-    "wronganswer_2": "2:1",
-    "wronganswer_3": "3:3"
-  },
-  {
-    "question": "what is the score between Udinese vs Bologna",
-    "answer": "2:1",
-    "wronganswer_1": "0:0",
-    "wronganswer_2": "3:4",
-    "wronganswer_3": "3:2"
-  },
-  {
-    "question": "what is the score between Atalanta vs Fiorentina",
-    "answer": "3:1",
-    "wronganswer_1": "4:0",
-    "wronganswer_2": "1:4",
-    "wronganswer_3": "4:3"
-  },
-  {
-    "question": "what is the score between Napoli vs Juventus",
-    "answer": "1:2",
-    "wronganswer_1": "3:0",
-    "wronganswer_2": "2:1",
-    "wronganswer_3": "3:4"
-  },
-  {
-    "question": "what is the score between Stuttgart vs Hannover 96",
-    "answer": "5:1",
-    "wronganswer_1": "2:2",
-    "wronganswer_2": "0:0",
-    "wronganswer_3": "0:4"
-  },
-  {
-    "question": "what is the score between Wolfsburg vs Werder Bremen",
+    "question": "what is the score between Chelsea vs Wolverhampton Wanderers",
     "answer": "1:1",
-    "wronganswer_1": "4:4",
-    "wronganswer_2": "3:2",
-    "wronganswer_3": "4:0"
+    "options": [
+      "2:0",
+      "0:3",
+      "4:3",
+      "1:1"
+    ]
   },
   {
-    "question": "what is the score between Guingamp vs Nantes",
-    "answer": "0:0",
-    "wronganswer_1": "3:2",
-    "wronganswer_2": "1:1",
-    "wronganswer_3": "3:3"
-  },
-  {
-    "question": "what is the score between Lille vs Dijon",
-    "answer": "1:0",
-    "wronganswer_1": "2:2",
-    "wronganswer_2": "3:1",
-    "wronganswer_3": "3:1"
-  },
-  {
-    "question": "what is the score between Nice vs Strasbourg",
-    "answer": "1:0",
-    "wronganswer_1": "0:1",
-    "wronganswer_2": "3:1",
-    "wronganswer_3": "3:4"
-  },
-  {
-    "question": "what is the score between Olympique Lyonnais vs Toulouse",
-    "answer": "5:1",
-    "wronganswer_1": "0:2",
-    "wronganswer_2": "3:0",
-    "wronganswer_3": "4:4"
-  },
-  {
-    "question": "what is the score between Olympique Marseille vs Saint-Étienne",
+    "question": "what is the score between Arsenal vs Manchester United",
     "answer": "2:0",
-    "wronganswer_1": "4:3",
-    "wronganswer_2": "4:3",
-    "wronganswer_3": "4:3"
+    "options": [
+      "4:4",
+      "4:1",
+      "3:3",
+      "2:0"
+    ]
   },
   {
-    "question": "what is the score between Bolivia vs Nicaragua",
+    "question": "what is the score between Celta de Vigo vs Real Betis",
+    "answer": "0:1",
+    "options": [
+      "2:0",
+      "2:0",
+      "2:2",
+      "0:1"
+    ]
+  },
+  {
+    "question": "what is the score between Girona vs Valencia",
+    "answer": "2:3",
+    "options": [
+      "4:0",
+      "1:1",
+      "1:2",
+      "2:3"
+    ]
+  },
+  {
+    "question": "what is the score between Levante vs Villarreal",
+    "answer": "0:2",
+    "options": [
+      "4:1",
+      "2:3",
+      "1:1",
+      "0:2"
+    ]
+  },
+  {
+    "question": "what is the score between Sevilla vs Real Sociedad",
+    "answer": "5:2",
+    "options": [
+      "1:1",
+      "3:3",
+      "0:4",
+      "5:2"
+    ]
+  },
+  {
+    "question": "what is the score between Real Valladolid vs Real Madrid",
+    "answer": "1:4",
+    "options": [
+      "0:0",
+      "0:1",
+      "3:3",
+      "1:4"
+    ]
+  },
+  {
+    "question": "what is the score between Bologna vs Cagliari",
+    "answer": "2:0",
+    "options": [
+      "3:1",
+      "4:2",
+      "4:1",
+      "2:0"
+    ]
+  },
+  {
+    "question": "what is the score between Frosinone vs Torino",
+    "answer": "1:2",
+    "options": [
+      "2:4",
+      "0:0",
+      "3:0",
+      "1:2"
+    ]
+  },
+  {
+    "question": "what is the score between Internazionale vs SPAL",
+    "answer": "2:0",
+    "options": [
+      "0:1",
+      "3:1",
+      "4:3",
+      "2:0"
+    ]
+  },
+  {
+    "question": "what is the score between Sampdoria vs Atalanta",
+    "answer": "1:2",
+    "options": [
+      "3:4",
+      "4:1",
+      "4:0",
+      "1:2"
+    ]
+  },
+  {
+    "question": "what is the score between Sassuolo vs Napoli",
+    "answer": "1:1",
+    "options": [
+      "4:0",
+      "3:3",
+      "0:2",
+      "1:1"
+    ]
+  },
+  {
+    "question": "what is the score between Fiorentina vs Lazio",
+    "answer": "1:1",
+    "options": [
+      "3:3",
+      "4:3",
+      "2:4",
+      "1:1"
+    ]
+  },
+  {
+    "question": "what is the score between Hoffenheim vs Nürnberg",
+    "answer": "2:1",
+    "options": [
+      "3:0",
+      "0:2",
+      "1:2",
+      "2:1"
+    ]
+  },
+  {
+    "question": "what is the score between Hannover 96 vs Bayer Leverkusen",
+    "answer": "2:3",
+    "options": [
+      "4:1",
+      "0:0",
+      "3:1",
+      "2:3"
+    ]
+  },
+  {
+    "question": "what is the score between Montpellier vs Angers SCO",
     "answer": "2:2",
-    "wronganswer_1": "0:0",
-    "wronganswer_2": "0:3",
-    "wronganswer_3": "0:3"
+    "options": [
+      "4:1",
+      "4:0",
+      "4:1",
+      "2:2"
+    ]
+  },
+  {
+    "question": "what is the score between Saint-Étienne vs Lille",
+    "answer": "0:1",
+    "options": [
+      "2:4",
+      "3:4",
+      "2:2",
+      "0:1"
+    ]
+  },
+  {
+    "question": "what is the score between Toulouse vs Guingamp",
+    "answer": "1:0",
+    "options": [
+      "2:2",
+      "0:4",
+      "0:2",
+      "1:0"
+    ]
+  },
+  {
+    "question": "what is the score between Rennes vs Caen",
+    "answer": "3:1",
+    "options": [
+      "4:3",
+      "1:3",
+      "1:3",
+      "3:1"
+    ]
+  },
+  {
+    "question": "what is the score between Olympique Marseille vs Nice",
+    "answer": "1:0",
+    "options": [
+      "2:3",
+      "2:2",
+      "3:4",
+      "1:0"
+    ]
+  },
+  {
+    "question": "what is the score between Birmingham City vs Aston Villa",
+    "answer": "0:1",
+    "options": [
+      "3:2",
+      "2:4",
+      "3:4",
+      "0:1"
+    ]
   }
 ]

@@ -3,8 +3,9 @@ const fs = require ('fs');
 
 
 
-let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-03';
+let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-10';
 (async () => {
+    // launch puppeteer
     const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
     await page.setViewport({width: 1920, height: 926 });
@@ -30,7 +31,7 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-03';
         }
         let homeData = [];
         let awayData =[];
-        //get the sport elements
+        //get elements under team.home
         let homematchData = document.querySelectorAll('div.team-home');        
         homematchData.forEach((sportelement) => { 
             let sportJson = {};
@@ -47,6 +48,8 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-03';
             }
             homeData.push(sportJson);
         });
+        
+        //get elements under team.home
         let awaymatchData = document.querySelectorAll('div.team-away');
         awaymatchData.forEach((awayelement) => { 
             let sportJson = {};
@@ -65,7 +68,9 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-03';
         return homeData.concat(awayData);  
             
     });
+
     // console.log(JSON.stringify(sportData, null, 2));
+    //Formatting the generated content
     let formQue = JSON.stringify(sportData, null, 2);
     let homeTeamArr = []; 
     let homeScoreArr =[];
@@ -104,15 +109,20 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-03';
         wrongAwayScoreArr_3.push(wrongAwayScore_3);
     }
 
+    //generating questions, answers and options
     for ( i=0; i<homeTeamArr.length; i++){
         let sportQueJson = {};
         sportQueJson.question = 'what is the score between ' + homeTeamArr[i] + ' vs ' +awayTeamArr[i] ;
         sportQueJson.answer = homeScoreArr[i]+ ':' +awayScoreArr[i];
-        sportQueJson.wronganswer_1 = wrongHomeScoreArr_1[i]+ ':' + wrongAwayScoreArr_1[i];
-        sportQueJson.wronganswer_2 = wrongHomeScoreArr_2[i]+ ':' + wrongAwayScoreArr_2[i];
-        sportQueJson.wronganswer_3 = wrongHomeScoreArr_3[i]+ ':' + wrongAwayScoreArr_3[i]
+        const optionA = wrongHomeScoreArr_1[i]+ ':' + wrongAwayScoreArr_1[i];
+        const optionB = wrongHomeScoreArr_2[i]+ ':' + wrongAwayScoreArr_2[i];
+        const optionC = wrongHomeScoreArr_3[i]+ ':' + wrongAwayScoreArr_3[i];
+        const optionD = homeScoreArr[i]+ ':' +awayScoreArr[i];
+        sportQueJson.options = [optionA, optionB, optionC, optionD];
         question.push(sportQueJson);    
     }
+
+    //writing to file
     fs.writeFile('question.json', JSON.stringify(question, null, 2), (err, data)=>{
         if (err) {
             console.log(err);
