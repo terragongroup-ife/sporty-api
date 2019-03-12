@@ -19,8 +19,7 @@ router.get("/scrape", (req, res)=>{
               console.error(err)
             }
             data = JSON.parse(data);
-            console.log(data.length + ' ' + 'records' + ' ' + 'were' + ' ' + 'saved' + '' + 'successfully');
-            //const message = '';
+            console.log(data.length + ' ' + 'records' + ' ' + 'were' + ' ' + 'saved' + ' ' + 'successfully');
             Question.collection.insertMany(data)
             .then((resp) => {
                 console.log('questions saved successfully');
