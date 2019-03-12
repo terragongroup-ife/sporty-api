@@ -9,11 +9,13 @@ app.use(cors());
 
 const port = process.env.PORT;
 
+
+app.use(router);
+
+
 app.get('/', (req, res) => {
     res.send('Welcome to Terra Sport-Quiz')
 });
-
-app.use(router);
 
 app.listen(port, () => {
     console.log(`Server is active on port ${port}`)
