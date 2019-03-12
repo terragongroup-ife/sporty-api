@@ -3,9 +3,8 @@ mongoose.set('useCreateIndex', true);
 
 mongoose.Promise = global.Promise
 
-// const connectionUrl = 'mongodb://abassade:makinde123@ds159840.mlab.com:59840/sporty'
-
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true  })
+const connectionUrl = `mongodb://sport:sport123@ds159025.mlab.com:59025/sport-quiz`
+mongoose.connect(connectionUrl, {useNewUrlParser: true  })
 .then(() => {
     console.log('Connected to MongoDB sucessfully')
 })
