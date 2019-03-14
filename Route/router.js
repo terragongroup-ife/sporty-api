@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
  
-router.get('/scrape', cors(),(req, res)=>{
+router.get('/scrape', (req, res)=>{
     new Scrapper().scrape(req, res)
     .then( ()=>{
         fs.readFile('question.json', 'utf8', (err, data) => {
