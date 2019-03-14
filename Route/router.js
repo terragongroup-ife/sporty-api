@@ -6,7 +6,6 @@ const fs = require('fs');
 const Question = require('../Model/question');
 
 
-
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 

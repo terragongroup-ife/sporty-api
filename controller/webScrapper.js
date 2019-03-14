@@ -5,7 +5,7 @@ class Scrapper{
         scrape (req, res) {
                 return new Promise( (resolve, reject)=>{
                         
-                        let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-09';
+                        let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-10';
                         (async () => {
                             // launch puppeteer
                             const browser = await puppeteer.launch({headless: true});
