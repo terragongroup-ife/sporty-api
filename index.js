@@ -18,6 +18,7 @@ app.use(function(req, res, next) {
 
 app.use(router);
 
+// Endpoint 1
 
 app.get('/', (req, res) => {
     res.send('Welcome to Terra Sport-Quiz')

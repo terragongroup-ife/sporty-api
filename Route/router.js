@@ -9,8 +9,8 @@ const Question = require('../Model/question');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
-
-router.get("/scrape", (req, res)=>{
+ 
+router.get('/scrape', cors(),(req, res)=>{
     new Scrapper().scrape(req, res)
     .then( ()=>{
         fs.readFile('question.json', 'utf8', (err, data) => {
