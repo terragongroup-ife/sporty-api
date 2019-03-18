@@ -1,14 +1,17 @@
 const puppeteer = require('puppeteer');
 const fs = require ('fs');
 const shuffle = require('../Config/functions');
+const CronJob = require('cron').CronJob;
+
 
 class Scrapper{
         scrape (req, res) {
                 return new Promise( (resolve, reject)=>{
                         
-                        let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-10';
+
+                    const job = new CronJob('0 0 23 * * 1,2,3,6,7', function() {
+                        let sportUrl = 'https://www.goal.com/en-ng/live-scores';
                         (async () => {
-                            // launch puppeteer
                             const browser = await puppeteer.launch({headless: true});
                             const page = await browser.newPage();
                             await page.setViewport({width: 1920, height: 926 });
@@ -34,7 +37,7 @@ class Scrapper{
                                 }
                                 let homeData = [];
                                 let awayData =[];
-                                //get elements under team.home
+                                //get the sport elements
                                 let homematchData = document.querySelectorAll('div.team-home');        
                                 homematchData.forEach((sportelement) => { 
                                     let sportJson = {};
@@ -51,8 +54,6 @@ class Scrapper{
                                     }
                                     homeData.push(sportJson);
                                 });
-                                
-                                //get elements under team.home
                                 let awaymatchData = document.querySelectorAll('div.team-away');
                                 awaymatchData.forEach((awayelement) => { 
                                     let sportJson = {};
@@ -71,9 +72,7 @@ class Scrapper{
                                 return homeData.concat(awayData);  
                                     
                             });
-                        
                             // console.log(JSON.stringify(sportData, null, 2));
-                            //Formatting the generated content
                             let formQue = JSON.stringify(sportData, null, 2);
                             let homeTeamArr = []; 
                             let homeScoreArr =[];
@@ -111,12 +110,16 @@ class Scrapper{
                                 wrongAwayScoreArr_2.push(wrongAwayScore_2);
                                 wrongAwayScoreArr_3.push(wrongAwayScore_3);
                             }
+                    
+                            //getting the date of the game
+                            let gameDate = await page.evaluate(() => {
+                                const date = document.querySelector('span.text').innerText; 
+                                return date;
+                            })
                         
-                            
-                            //generating questions, answers and options
                             for ( i=0; i<homeTeamArr.length; i++){
                                 let sportQueJson = {};
-                                sportQueJson.question = 'what is the score between ' + homeTeamArr[i] + ' vs ' +awayTeamArr[i] ;
+                                sportQueJson.question = 'what did ' + homeTeamArr[i] + ' vs ' +awayTeamArr[i] + ' play on ' +gameDate ;
                                 sportQueJson.answer = homeScoreArr[i]+ ':' +awayScoreArr[i];
                                 const optionA = wrongHomeScoreArr_1[i]+ ':' + wrongAwayScoreArr_1[i];
                                 const optionB = wrongHomeScoreArr_2[i]+ ':' + wrongAwayScoreArr_2[i];
@@ -125,19 +128,21 @@ class Scrapper{
                                 sportQueJson.options = shuffle([optionA, optionB, optionC, optionD]);
                                 question.push(sportQueJson);    
                             }
-                        
-                            //writing to file
                             fs.writeFile('question.json', JSON.stringify(question, null, 2), (err, data)=>{
                                 if (err) {
-                                        reject ('Unable to write file')
+                                    reject ('Unable to write file');
                                     console.log(err);
                                 }
                                 else{
-                                   resolve ('File written successfully')
-                                   console.log("File written successfully");
+                                    resolve ('File written successfully');
+                                    console.log("File written successfully");
                                 }
                             })
                         })();
+                        
+                    });
+                    
+                    job.start();
 })
 }
 }
