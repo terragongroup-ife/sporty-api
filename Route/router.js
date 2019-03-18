@@ -4,6 +4,8 @@ const Scrapper = require('../controller/webScrapper');
 const router = express.Router();
 const fs = require('fs');
 const Question = require('../Model/question');
+const shuffle = require('../Config/functions');
+
 
 
 router.use(bodyParser.json());
@@ -51,6 +53,9 @@ router.get('/random', (req, res) => {
         [ { $sample: { size: 5 } } ]
      )
      .then((data) => {
+         data.forEach(question => {
+             question.options = shuffle(question.options);
+         });
          return res.send({
              error: false,
              code: 200,

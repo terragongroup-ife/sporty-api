@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require ('fs');
+const shuffle = require('../Config/functions');
 
 class Scrapper{
         scrape (req, res) {
@@ -111,6 +112,7 @@ class Scrapper{
                                 wrongAwayScoreArr_3.push(wrongAwayScore_3);
                             }
                         
+                            
                             //generating questions, answers and options
                             for ( i=0; i<homeTeamArr.length; i++){
                                 let sportQueJson = {};
@@ -120,7 +122,7 @@ class Scrapper{
                                 const optionB = wrongHomeScoreArr_2[i]+ ':' + wrongAwayScoreArr_2[i];
                                 const optionC = wrongHomeScoreArr_3[i]+ ':' + wrongAwayScoreArr_3[i];
                                 const optionD = homeScoreArr[i]+ ':' +awayScoreArr[i];
-                                sportQueJson.options = [optionA, optionB, optionC, optionD];
+                                sportQueJson.options = shuffle([optionA, optionB, optionC, optionD]);
                                 question.push(sportQueJson);    
                             }
                         
