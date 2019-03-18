@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require ('fs');
+const shuffle = require('./config/shuffle');
 
 
 
@@ -61,7 +62,7 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-10';
                 sportJson.awaywrongscore_3 = generateRandom(0, 4, sportJson.awayscore);
             }
             catch (exception){
-                console.log('error saving away team details')
+                console.log('error saving away team details');
             }
             awayData.push(sportJson);
         });
@@ -109,16 +110,23 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-10';
         wrongAwayScoreArr_3.push(wrongAwayScore_3);
     }
 
+    //getting the date of the game
+    let gameDate = await page.evaluate(() => {
+        const date = document.querySelector('span.text').innerText; 
+        return date;
+    })
+
+
     //generating questions, answers and options
     for ( i=0; i<homeTeamArr.length; i++){
         let sportQueJson = {};
-        sportQueJson.question = 'what is the score between ' + homeTeamArr[i] + ' vs ' +awayTeamArr[i] ;
+        sportQueJson.question = 'what did ' + homeTeamArr[i] + ' vs ' +awayTeamArr[i] + ' play on ' +gameDate ;
         sportQueJson.answer = homeScoreArr[i]+ ':' +awayScoreArr[i];
         const optionA = wrongHomeScoreArr_1[i]+ ':' + wrongAwayScoreArr_1[i];
         const optionB = wrongHomeScoreArr_2[i]+ ':' + wrongAwayScoreArr_2[i];
         const optionC = wrongHomeScoreArr_3[i]+ ':' + wrongAwayScoreArr_3[i];
         const optionD = homeScoreArr[i]+ ':' +awayScoreArr[i];
-        sportQueJson.options = [optionA, optionB, optionC, optionD];
+        sportQueJson.options = shuffle([optionA, optionB, optionC, optionD]);
         question.push(sportQueJson);    
     }
 
@@ -132,6 +140,3 @@ let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-10';
         }
     })
 })();
-
-
-   
