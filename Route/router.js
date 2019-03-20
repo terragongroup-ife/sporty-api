@@ -25,6 +25,12 @@ router.get('/scrape', (req, res)=>{
             .then((resp) => {
                 console.log('questions saved successfully');
                 console.log(data)
+            fs.unlink('question.json', (err) => {
+                    if (err) {
+                        throw error
+                    }
+                    console.log('File deleted');
+                })
                 return res.status(200).send({
                     error: false,
                     code: 200,
@@ -48,9 +54,11 @@ router.get('/scrape', (req, res)=>{
 
 
 
+
+
 router.get('/random', (req, res) => {
     Question.aggregate(
-        [ { $sample: { size: 5 } } ]
+        [ { $sample: { size: 10 } } ]
      )
      .then((data) => {
          data.forEach(question => {
@@ -72,6 +80,8 @@ router.get('/random', (req, res) => {
         });
      })
 });
+
+
 
 module.exports = router;
 
