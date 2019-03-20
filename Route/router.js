@@ -25,7 +25,7 @@ router.get('/scrape', (req, res)=>{
             .then((resp) => {
                 console.log('questions saved successfully');
                 console.log(data)
-            fs.unlink('question.json', (err) => {
+        fs.unlink('question.json', (err) => {
                     if (err) {
                         throw error
                     }
