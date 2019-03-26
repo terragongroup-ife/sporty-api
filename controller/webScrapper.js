@@ -9,8 +9,8 @@ class Scrapper{
                 return new Promise( (resolve, reject)=>{
                         
 
-                    const job = new CronJob('0 0 23 * * 1,2,3,6,7', function() {
-                        let sportUrl = 'https://www.goal.com/en-ng/live-scores';
+                    const job = new CronJob('120 * * * * *', function() { 
+                        let sportUrl = 'https://www.goal.com/en-gb/results/2019-03-03';
                         (async () => {
                             const browser = await puppeteer.launch({headless: true});
                             const page = await browser.newPage();
@@ -137,12 +137,13 @@ class Scrapper{
                                     resolve ('File written successfully');
                                     console.log("File written successfully");
                                 }
+                                
                             })
                         })();
-                        
                     });
                     
                     job.start();
+                    
 })
 }
 }

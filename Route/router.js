@@ -7,11 +7,11 @@ const Question = require('../Model/question');
 const shuffle = require('../Config/functions');
 
 
-
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
- 
+// Endpoint for scrapping, saving and deleting questions
+
 router.get('/scrape', (req, res)=>{
     new Scrapper().scrape(req, res)
     .then( ()=>{
@@ -25,12 +25,6 @@ router.get('/scrape', (req, res)=>{
             .then((resp) => {
                 console.log('questions saved successfully');
                 console.log(data)
-        fs.unlink('question.json', (err) => {
-                    if (err) {
-                        throw error
-                    }
-                    console.log('File deleted');
-                })
                 return res.status(200).send({
                     error: false,
                     code: 200,
@@ -45,6 +39,12 @@ router.get('/scrape', (req, res)=>{
                     message: err
                 })
             });    
+        fs.unlink('question.json', (err) => {
+                if (err) {
+                    throw error
+                }
+                console.log('File deleted');
+            })
         });
 
     }).catch( (error)=>{
@@ -53,8 +53,7 @@ router.get('/scrape', (req, res)=>{
 });
 
 
-
-
+// Endpoint for fetching random questions
 
 router.get('/random', (req, res) => {
     Question.aggregate(
@@ -80,7 +79,6 @@ router.get('/random', (req, res) => {
         });
      })
 });
-
 
 
 module.exports = router;
